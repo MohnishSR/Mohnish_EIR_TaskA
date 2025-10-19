@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Play Flappy Bird - A modern web game with pixelated UI, minimalist design, and smooth animations. Navigate through pipes, score points, and challenge your high score.">
+        <meta name="keywords" content="flappy bird, game, web game, html5, canvas, pixel art, arcade game">
+        <meta name="author" content="Flappy Bird Game">
+        <title>Flappy Bird - Modern Web Game | Play Free Arcade Game</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="assets/images/flappybird.png">
+    </head>
+    <body>
+        <a href="#game-container" class="skip-link" aria-label="Skip to main game content">Skip to game</a>
+        <main class="app-shell" id="game-container">
+            <div class="game-container">
+                <canvas id="board"></canvas>
+                
+                <div class="score-display" id="scoreDisplay" role="status" aria-live="polite" aria-label="Current score">0</div>
+                <div class="high-score-display" id="highScoreDisplay" role="status" aria-live="polite" aria-label="High score">High Score: 0</div>
+                
+                <button class="pause-btn" id="pauseBtn" aria-label="Pause game" tabindex="0">⏸</button>
+                
+                <div class="start-screen" id="startScreen" role="dialog" aria-labelledby="game-title" aria-modal="true">
+                    <h1 id="game-title"><b>Flappy Bird</b></h1>
+                    
+                    <button class="play-btn" id="playBtn" aria-label="Start new game" tabindex="0">▶ Play Game</button>
+                    <button class="sound-btn" id="soundBtn" aria-label="Toggle sound on or off" tabindex="0">🔊</button>
+                </div>
+                
+                <div class="pause-screen" id="pauseScreen" role="dialog" aria-labelledby="pause-title" aria-modal="true" style="display: none;">
+                    <h2 id="pause-title">Game Paused</h2>
+                    <button class="resume-btn" id="resumeBtn" aria-label="Resume game" tabindex="0">▶ Resume</button>
+                    <br>
+                    <br>
+                     <button id="pauseHomeBtn" aria-label="Return to home screen" tabindex="0">🏠 Home</button>
+                </div>
+                
+                <div class="game-over-screen" id="gameOverScreen" role="dialog" aria-labelledby="game-over-title" aria-modal="true" style="display: none;">
+                    <h2 id="game-over-title">Game Over!</h2>
+                    <div class="score-info" role="status" aria-live="polite">
+                        <p>Score: <span id="finalScore">0</span></p>
+                        <p>High Score: <span id="highScoreFinal">0</span> <span class="new-badge" id="newBadge" aria-label="New high score achieved">NEW! 🎉</span></p>
+                    </div>
+                    <br>
+                    <button class="restart-btn" id="restartBtn" aria-label="Start new game" tabindex="0">🔄 Play Again</button>
+                    <br>
+                    <br>
+                    <br> 
+                    <button id="gameOverHomeBtn" aria-label="Return to home screen" tabindex="0">🏠 Home</button>
+                </div>
+            </div>
+
+            <section class="info-panel" aria-labelledby="instructions-title">
+                <h2 id="instructions-title">How to Play</h2>
+                <ul role="list">
+                    <li role="listitem">🖱️ Click or press <strong>SPACE</strong> to make the bird jump</li>
+                    <li role="listitem">⏸️ Press <strong>ESC</strong> to pause or resume the game</li>
+                    <li role="listitem">🎯 Navigate through pipe gaps to score points</li>
+                    <li role="listitem">🔊 Use the sound button to toggle audio on/off</li>
+                </ul>
+                
+                <button class="leaderboard-btn" id="leaderboardBtn" aria-label="View high scores leaderboard" tabindex="0">🏆 View Leaderboard</button>
+            </section>
+            
+            <!-- Leaderboard Modal -->
+            <div class="leaderboard-modal" id="leaderboardModal" role="dialog" aria-labelledby="leaderboard-title" aria-modal="true" style="display: none;">
+                <div class="leaderboard-content">
+                    <h2 id="leaderboard-title">🏆 High Scores Leaderboard</h2>
+                    <div class="leaderboard-list" id="leaderboardList">
+                        <!-- Scores will be populated here -->
+                    </div>
+                    <button class="close-leaderboard-btn" id="closeLeaderboardBtn" aria-label="Close leaderboard" tabindex="0">✖ Close</button>
+                </div>
+            </div>
+        </main>
+        
+        <script src="js/database.js"></script>
+        <script src="js/game.js"></script>
+    </body>
+</html>
